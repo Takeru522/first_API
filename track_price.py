@@ -19,3 +19,7 @@ import sqlite3
 conn = sqlite3.connect("product_data.db")
 df.to_sql("products", conn, if_exists="replace", index=False)
 conn.close()
+# Step 5: Generate a Summary Report
+top_products = df.sort_values(by="price", ascending=False).head(5)
+top_products.to_csv("top_products_report.csv", index=False)
+# Step 6: Wrap It All in a Script
